@@ -8,7 +8,6 @@ header {
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  animation: fadeInDown 2s ease-in-out;
 }
 
 #menu-menu-principal {
@@ -26,7 +25,6 @@ header {
   height: 40px;
   align-items: center;
   justify-content: center;
-  animation: fadeInUp 2s ease-in-out;
 }
 
 .menu-footer-container {
@@ -214,10 +212,6 @@ body {
   min-height: calc(100vh - 130px);
   max-width: 1440px;
   margin: 0 auto;
-}
-
-.main-container h1 {
-  display: none;
 }
 
 .page-content {
