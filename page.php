@@ -1,4 +1,19 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying all pages
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages and that
+ * other 'pages' on your WordPress site will use a different template.
+ *
+ * The Template for displaying all single posts
+ *
+ * @package WordPress
+ * @subpackage nathalie-mota theme
+ * @since nathalie-mota 1.0
+ */
+
+get_header(); ?>
 
 <div class="main-container" id="<?php echo get_post_field('post_name', get_post()); ?>">
     <?php 

@@ -46,3 +46,24 @@ jQuery(document).ready(function ($) {
 /********************************************************/
 /*****Zone photos apparentées class= sliderContainer*****/
 /********************************************************/
+
+
+  const arrow_left = document.querySelector(".arrow_left");
+  const arrow_right = document.querySelector(".arrow_right");
+
+  function imgBefore(arrow_left) {
+    arrow_left.addEventListener("click", () => {
+      console.log("clique à gauche");
+    });
+  }
+
+  function imgAfter(arrow_right) {
+    arrow_right.addEventListener("click", () => {
+      console.log("clique à droite");
+    });
+  }
+
+  imgBefore(arrow_left);
+  imgAfter(arrow_right);
+  
+
