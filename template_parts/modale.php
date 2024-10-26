@@ -10,4 +10,3 @@
             </div>		
 	</div>
 </section>
-<?php the_field( 'reference' ); ?>
