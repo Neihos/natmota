@@ -1,3 +1,4 @@
+</body>
 <footer class="motaFooter">
     <?php 
 		// menu footer déclaré dans functions.php
@@ -9,5 +10,5 @@
     ?>
 </footer>
 <?php wp_footer(); ?>
-</body>
+
 </html>
