@@ -8,6 +8,7 @@
 header {
   display: flex;
   position: sticky;
+  max-width: 1440px;
   width: 100%;
   height: 80px;
   align-items: center;
@@ -31,6 +32,7 @@ header img:hover {
 /**************/
 .motaFooter {
   display: flex;
+  max-width: 1440px;
   width: 100%;
   height: 40px;
   align-items: center;
@@ -196,18 +198,19 @@ header img:hover {
 
 .single-container {
   max-width: 100%;
-}
-.single-container .preview-photo {
-  display: grid;
-  width: 100%;
-  gap: 20px;
-  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 167px);
   padding-left: clamp(4.375rem, -1.0536rem + 11.3095vw, 9.125rem);
   padding-right: clamp(4.375rem, -1.0536rem + 11.3095vw, 9.125rem);
-  margin-top: 38px;
 }
 
-.single-content {
+.preview-photo {
+  display: grid;
+  width: 100%;
+  grid-gap: 10px 25px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 38px;
+}
+.preview-photo .single-content {
   display: flex;
   width: 100%;
   height: 100%;
@@ -219,10 +222,11 @@ header img:hover {
   border-bottom: 1px solid rgb(0, 0, 0);
   font-size: 14px;
 }
-.single-content .post-title {
+.preview-photo .single-content .post-title {
   width: clamp(18.75rem, 10.1786rem + 17.8571vw, 26.25rem);
   font-size: clamp(3.3rem, 1.8571rem + 2.381vw, 4rem);
   font-style: italic;
+  font-weight: 400;
   line-height: 1;
   margin: 2.8rem 0;
 }
@@ -268,26 +272,65 @@ header img:hover {
 
 .sliderContainer {
   display: flex;
-  grid-row: span 2;
-}
-.sliderContainer .slider {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  height: 118px;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-direction: column;
+  height: 123px;
   width: 100%;
 }
-.sliderContainer .slider .changeImg {
+.sliderContainer .changeImg {
+  width: 81px;
+  align-self: flex-end;
+}
+.sliderContainer .changeImg img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 81px;
+  height: 71px;
+}
+.sliderContainer .changeImg .hiddenImg {
+  display: none;
+}
+.sliderContainer .arrows {
   display: flex;
+  width: 81px;
   justify-content: space-between;
-  width: 80px;
+  align-self: flex-end;
+  padding-bottom: 20px;
 }
-.sliderContainer .slider .changeImg img {
-  cursor: pointer;
-  transition: transform 0.3s ease;
+
+.likeToo {
+  width: 100%;
+  border-top: 1px solid black;
+  padding-top: 40px;
 }
-.sliderContainer .slider .changeImg img:hover {
-  transform: scale(1.2);
+.likeToo h3 {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: uppercase;
+  justify-content: flex-start;
+}
+
+.containerLikeToo {
+  display: flex;
+  width: 100%;
+  margin: 40px 0 100px 0;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.photoLikeToo {
+  flex: 1;
+  max-width: calc((100% - 20px) / 2);
+  aspect-ratio: 564/495;
+}
+
+.photoLikeToo img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 @font-face {

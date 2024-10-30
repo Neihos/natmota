@@ -10,62 +10,29 @@
 
 get_header(); ?>
 
+<?php include('template_parts/template/infos_photos.php'); ?>
+
 <main class="single-container">
 
-    <?php 
-         // Vérifie s'il y a des posts/pages à afficher
-        if ( have_posts() ) :
-         // Boucle à travers les pages et affiche leur contenu
-            while ( have_posts() ) : the_post(); 
-    ?>
+<?php 
+// Vérifie s'il y a des posts/pages à afficher
+if ( have_posts() ) :
+    // Boucle à travers les pages et affiche leur contenu
+    while ( have_posts() ) : the_post(); 
+?>
 
-    <?php if ( 'photo' === get_post_type() ): ?>
+<?php if ( 'photo' === get_post_type() ): ?>
 
-
-    <Article class="preview-photo">
+    <article class="preview-photo">
 
         <section class="single-content">            
-            
-            <div class="post-title"><?php the_title(); ?></div>
-            <div class="reference">Référence : <?php the_field( 'reference' ); ?></div>        
-            <div class="catégorie">
-                <?php 
-             // Récupérer les catégories associées
-                $categories = get_the_terms( get_the_ID(), 'categorie' ); 
-                if ( !empty($categories) && !is_wp_error($categories) ) {
-                    $cat_names = wp_list_pluck( $categories, 'name' ); // Extraire seulement les noms
-                    echo 'Catégorie : ' . implode(', ', $cat_names); // Convertir en chaîne
-                } else {
-                    echo 'Catégorie : Aucune'; // Gérer le cas où il n'y a pas de catégorie
-                }
-                ?>  
-            </div>     
-            <div class="format">
-                <?php 
-             // Récupérer les formats associés
-                $formats = get_the_terms( get_the_ID(), 'format' ); 
-                if ( !empty($formats) && !is_wp_error($formats) ) {
-                    $format_names = wp_list_pluck( $formats, 'name' ); // Extraire seulement les noms
-                    echo 'Format : ' . implode(', ', $format_names); // Convertir en chaîne
-                } else {
-                    echo 'Format : Aucun'; // Gérer le cas où il n'y a pas de format
-                }
-                ?>
-            </div>
+            <h1 class="post-title"><?php the_title(); ?></h1>
+            <div class="reference">Référence : <?php the_field( 'reference' ); ?></div>                   
+            <div class="catégorie">Catégorie : <?php echo implode(', ', $cat_names);?></div>     
+            <div class="format">Format : <?php echo implode(', ', $format_names);?></div>
             <div class="post-type">Type : <?php echo esc_html( get_field('type') ); ?></div>
             <div class="publication-year">Année : <?php echo get_the_date('Y'); ?></div>
-            
-        </section>
-
-        <?php 
-         // Récupérer le tableau complet de l'image depuis le champ ACF 'photographie'
-            $photographie = get_field( 'photographie' );
-        
-         // Vérifier que l'image existe
-            if( !empty($photographie) ) : 
-         // Priorité à la taille "full", sinon on utilise 'large', puis 'medium'
-            $image_url = $photographie['sizes']['full'] ?? $photographie['sizes']['large'] ?? $photographie['sizes']['medium'] ?? $photographie['url'];
-        ?>
+        </section>        
 
         <section class="preview__picture">
             <img 
@@ -74,34 +41,70 @@ get_header(); ?>
             >
         </section>
 
-        
-        <div class="btnPhotoInteress">
+        <section class="btnPhotoInteress">
             <p>Cette photo vous intéresse ?</p>
             <button class="contactPhoto">Contact</button>
-        </div>
-        
-        
-        <div class="sliderContainer">
-            <div class="slider">
-                <div class="imgCarrousel"></div>
-                <div class="changeImg">                
-                    <img class="arrow_left" src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow_left.png"
-			        alt="Icone vers l'image précédente" title="Voir image précédente">
-                    <img class="arrow_right" src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow_right.png"
-			        alt="Icone vers l'image suivante" title="Voir image suivante">
+        </section>      
+
+        <section class="sliderContainer">
+                <div class="changeImg noImg"> 
+                    <img class="previousImg hiddenImg" src="<?php echo esc_url($previousThumbnailUrl); ?>" alt="Image précédente">
+                    <img class="nextImg hiddenImg" src="<?php echo esc_url($nextThumbnailUrl); ?>" alt="Image suivante">
+                </div> 
+                <div class="arrows">
+                    <a class="arrow-left" href="<?php echo $previousPostUrl; ?>">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow_left.png" alt="flèche gauche">
+                    </a>
+                    <a class="arrow-right" href="<?php echo $nextPostUrl; ?>">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow_right.png" alt="flèche droite">
+                    </a>                 
                 </div>
-            </div>
-        </div>
-                <?php endif; ?>
-    </Article>
+        </section>
+    </article>
 
-                <?php endif; ?>
-    <?php
-            endwhile;
-        endif;
-    ?>
+    
+    
+    <article class="likeToo">
+        <h3>Vous aimerez aussi</h3>
 
+ <?php if ($current_cat_id): ?>
 
+        <article class="containerLikeToo">
+              <?php 
+            // Boucle pour afficher les photos de la même catégorie
+            if ($related_photos->have_posts()) :
+                while ($related_photos->have_posts()) : $related_photos->the_post(); 
+                    $related_photo = get_field('photographie');
+                    $related_photo_reference = get_field('reference'); // Référence de la photo liée
+                    $related_large_url = $related_photo['sizes']['large'] ?? '';
+
+                    // Si l'URL de la photo est vide ou si la référence est identique à la photo principale, ignorer cette photo
+                    if (empty($related_large_url) || $related_photo_reference === $reference) {
+                        continue;
+                    }
+            ?>      
+            <section class="photoLikeToo">
+                <a href="<?php the_permalink(); ?>">
+                    <img src="<?php echo esc_url($related_large_url); ?>" alt="<?php echo esc_attr($related_photo['alt']); ?>">
+                </a>
+            </section>
+            <?php 
+                endwhile;
+                wp_reset_postdata(); // Réinitialiser les données de post
+            endif;
+            ?>
+        </article>
+<?php endif; ?>          
+        
+    </article>
+
+<?php endif; ?>
+    
+
+<?php
+    endwhile;
+endif;
+?>
 
 </main>
 <?php get_footer(); ?>
