@@ -37,7 +37,7 @@ $first_post = $photo_posts[0] ?? null;
 $previous_post = get_previous_post();
 $next_post = get_next_post();
 $last_post = end($photo_posts) ?: null;        
- $current_photo_id = get_the_ID();
+$current_photo_id = get_the_ID();
 
 // URLs des premiers et derniers posts
 $firstPostUrl = $first_post ? esc_url(get_permalink($first_post->ID)) : '#';
@@ -89,5 +89,3 @@ if ($current_cat_id) {
         ),
     ));
 }
-
-?>  

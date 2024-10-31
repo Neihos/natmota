@@ -51,8 +51,8 @@ if ( have_posts() ) :
 
             <div class="sliderContainer">
                 <div class="changeImg noImg"> 
-                    <img class="previousImg hiddenImg" src="<?php echo esc_url($previousThumbnailUrl); ?>" alt="Image précédente">
-                    <img class="nextImg hiddenImg" src="<?php echo esc_url($nextThumbnailUrl); ?>" alt="Image suivante">
+                    <img class="previousImg hiddenNow" src="<?php echo esc_url($previousThumbnailUrl); ?>" alt="Image précédente">
+                    <img class="nextImg hiddenNow" src="<?php echo esc_url($nextThumbnailUrl); ?>" alt="Image suivante">
                 </div> 
                 <div class="arrows">
                     <a class="arrow-left" href="<?php echo $previousPostUrl; ?>">

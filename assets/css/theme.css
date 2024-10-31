@@ -5,7 +5,7 @@
 /**************/
 /*** Header ***/
 /**************/
-header {
+.navBar {
   display: flex;
   position: sticky;
   max-width: 1440px;
@@ -17,7 +17,17 @@ header {
   margin: 0 auto;
   box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
 }
-header img:hover {
+.navBar .logoSite {
+  display: flex;
+  width: 216px;
+  height: 14px;
+  align-items: center;
+}
+.navBar .logoSite img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.navBar .logoSite img:hover {
   animation: zoomIn 0.5s ease forwards;
 }
 
@@ -25,6 +35,18 @@ header img:hover {
   display: flex;
   gap: 2rem;
   justify-content: space-between;
+}
+
+.burgerMenu {
+  display: none;
+}
+
+.burger-menu {
+  display: none;
+}
+
+.open {
+  display: flex;
 }
 
 /**************/
@@ -76,8 +98,38 @@ header img:hover {
 }
 
 @media (max-width: 767px) {
+  .navBar {
+    padding: 0 clamp(2.5rem, 0.706rem + 7.653vw, 4.375rem);
+  }
+  .navBar .logoSite img {
+    width: clamp(8.625rem, 3.961rem + 19.898vw, 13.5rem);
+  }
   .navDesktop {
     display: none;
+  }
+  .burgerMenu {
+    display: block;
+    font-size: 28px;
+    cursor: pointer;
+  }
+  .burger-menu {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 80px);
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(224, 0, 0);
+  }
+  .burger-menu #menu-menu-principal-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3vh;
+    padding-left: 0;
+  }
+  .burger-menu #menu-menu-principal-1 li a {
+    color: rgb(255, 255, 255);
+    font-size: 2.75rem;
   }
   .motaFooter {
     height: 208px;
@@ -350,9 +402,6 @@ header img:hover {
   width: 81px;
   height: 71px;
 }
-.contactSlider .sliderContainer .changeImg .hiddenImg {
-  display: none;
-}
 .contactSlider .sliderContainer .arrows {
   display: flex;
   width: 81px;
@@ -521,4 +570,8 @@ body {
   flex-direction: column;
   width: 60%;
   margin: 10px auto;
+}
+
+.hiddenNow {
+  display: none;
 }/*# sourceMappingURL=theme.css.map */

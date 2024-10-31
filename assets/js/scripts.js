@@ -25,13 +25,11 @@ jQuery(document).ready(function ($) {
       }
     });
   }
-});
 
+  /*******************************************/
+  /*****Récupérer la référence des photos*****/
+  /*******************************************/
 
-/*******************************************/
-/*****Récupérer la référence des photos*****/
-/*******************************************/
-jQuery(document).ready(function ($) {
   const ref = $(".reference");
 
   if (ref.length) {
@@ -43,20 +41,16 @@ jQuery(document).ready(function ($) {
     // Insère uniquement la valeur extraite dans le champ
     $("#menu-ref-photo").val(referenceValue);
   }
-});
 
+  /********************************************************/
+  /*****Zone photos apparentées class= sliderContainer*****/
+  /********************************************************/
 
-/********************************************************/
-/*****Zone photos apparentées class= sliderContainer*****/
-/********************************************************/
-
-jQuery(document).ready(function ($) {
   // Sélectionner les flèches et récupérer les images à utiliser
   const arrow_left = $(".arrow-left");
   const arrow_right = $(".arrow-right");
   const img_previous = $(".previousImg");
   const img_next = $(".nextImg");
-  const changeImg = $(".changeImg");
 
   // Fonction pour gérer le clic sur la flèche gauche
   arrow_left.click(function () {
@@ -75,7 +69,7 @@ jQuery(document).ready(function ($) {
     let nextPostUrl = $(this).data("next");
     const firstPostUrl = $(this).data("first");
 
-  // Redirige vers le premier post si on est à la fin de la série
+    // Redirige vers le premier post si on est à la fin de la série
     if (nextPostUrl === "#") {
       nextPostUrl = firstPostUrl;
     }
@@ -84,12 +78,62 @@ jQuery(document).ready(function ($) {
 
   // Fait apparaitre les images du slider au hover
   arrow_left.hover(
-    function(){img_previous.removeClass("hiddenImg");}, 
-    function(){img_previous.addClass("hiddenImg");}
-  )
+    function () {
+      img_previous.removeClass("hiddenNow");
+    },
+    function () {
+      img_previous.addClass("hiddenNow");
+    }
+  );
 
   arrow_right.hover(
-    function () {img_next.removeClass("hiddenImg");},
-    function () {img_next.addClass("hiddenImg");}
+    function () {
+      img_next.removeClass("hiddenNow");
+    },
+    function () {
+      img_next.addClass("hiddenNow");
+    }
   );
+
+  /***************************************************/
+  /***** burger menu *****/
+  /***************************************************/
+
+  // Sélectionne le bouton du menu burger et son icône, le menu burger lui-même et tous les liens
+  const $burgerMenuButton = $(".burgerMenu");
+  const $burgerIcone = $(".burgerIcon");
+  const $crossIcone = $(".crossIcon");
+  const $burgerMenu = $(".burger-menu");
+  const $menuLinks = $(".burger-menu a");
+
+  // Ajoute un événement de clic sur le bouton du menu burger
+  $burgerMenuButton.click(function () {
+    // Bascule l'état du menu
+    $burgerMenu.toggleClass("open");
+    const isOpen = $burgerMenu.hasClass("open");
+
+    // Met à jour l'affichage des icônes
+    if (isOpen) {
+      $burgerIcone.addClass("hiddenNow");
+      $crossIcone.removeClass("hiddenNow");
+      //console.log("c'est ouvert");
+    } else {
+      $burgerIcone.removeClass("hiddenNow");
+      $crossIcone.addClass("hiddenNow");
+      //console.log("c'est fermé");
+    }
+
+    // Désactive le défilement du corps de la page si le menu est ouvert
+    $("body").css("overflow", isOpen ? "hidden" : "auto");
+  });
+
+  // Ajoute un événement de clic sur les liens du menu burger
+  $menuLinks.click(function () {
+    $burgerMenu.removeClass("open");
+    $burgerIcone.removeClass("hiddenNow");
+    $crossIcone.addClass("hiddenNow");
+
+    // Réactive le défilement du corps de la page à la fermeture du menu
+    $("body").css("overflow", "auto");
+  });
 });

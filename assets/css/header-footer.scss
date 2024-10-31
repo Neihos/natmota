@@ -2,7 +2,7 @@
 /*** Header ***/
 /**************/
 
-header {
+.navBar {
   display: flex;
   position: sticky;
   max-width: 1440px;
@@ -13,9 +13,17 @@ header {
   padding: 0 clamp(4.375rem, -1.0536rem + 11.3095vw, 9.125rem);
   margin: 0 auto;
   box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
-  img:hover {
-    animation: zoomIn 0.5s ease forwards;
-
+  .logoSite {
+    display: flex;
+    width: 216px;
+    height: 14px;
+    align-items: center;
+    img {
+      object-fit: cover;
+      &:hover {
+        animation: zoomIn 0.5s ease forwards;
+      }
+    }
   }
 }
 
@@ -23,6 +31,18 @@ header {
   display: flex;
   gap: 2rem;
   justify-content: space-between;
+}
+
+.burgerMenu {
+  display: none;
+}
+
+.burger-menu {
+  display: none;
+}
+
+.open {
+  display: flex;
 }
 
 /**************/
@@ -70,16 +90,47 @@ header {
 #menu-item-69 a:hover,
 #menu-item-50 a:hover,
 #menu-item-51 a:hover {
-  display: inline-block;  
+  display: inline-block;
   font-weight: 700;
   animation: zoomIn 0.5s ease forwards;
 }
 
-@media (max-width: 767px){
+@media (max-width: 767px) {
+  .navBar {
+    padding: 0 clamp(2.5rem, 0.706rem + 7.653vw, 4.375rem);
+    .logoSite img {
+      width: clamp(8.625rem, 3.961rem + 19.898vw, 13.5rem);
+    }
+  }
   .navDesktop {
     display: none;
   }
 
+  .burgerMenu {
+    display: block;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  .burger-menu {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 80px);
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(224, 0, 0, 1);
+    #menu-menu-principal-1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3vh;
+      padding-left: 0;
+      li a {
+        color: rgba(255, 255, 255, 1);
+        font-size: 2.75rem;
+      }
+    }
+  }
   .motaFooter {
     height: 208px;
   }
