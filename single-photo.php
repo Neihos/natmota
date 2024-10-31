@@ -25,41 +25,46 @@ if ( have_posts() ) :
 
     <article class="preview-photo">
 
-        <section class="single-content">            
-            <h1 class="post-title"><?php the_title(); ?></h1>
-            <div class="reference">Référence : <?php the_field( 'reference' ); ?></div>                   
-            <div class="catégorie">Catégorie : <?php echo implode(', ', $cat_names);?></div>     
-            <div class="format">Format : <?php echo implode(', ', $format_names);?></div>
-            <div class="post-type">Type : <?php echo esc_html( get_field('type') ); ?></div>
-            <div class="publication-year">Année : <?php echo get_the_date('Y'); ?></div>
-        </section>        
+        <section class="photoOnTop">
+            <div class="single-content">            
+                <h1 class="post-title"><?php the_title(); ?></h1>
+                <div class="reference">Référence : <?php the_field( 'reference' ); ?></div>                   
+                <div class="catégorie">Catégorie : <?php echo implode(', ', $cat_names);?></div>     
+                <div class="format">Format : <?php echo implode(', ', $format_names);?></div>
+                <div class="post-type">Type : <?php echo esc_html( get_field('type') ); ?></div>
+                <div class="publication-year">Année : <?php echo get_the_date('Y'); ?></div>
+            </div>        
 
-        <section class="preview__picture">
-            <img 
-                src="<?php echo esc_url( $image_url ); ?>" 
-                alt="<?php echo esc_attr( $photographie['alt'] ); ?>"
-            >
+            <div class="preview__picture">
+                <img 
+                    src="<?php echo esc_url( $image_url ); ?>" 
+                    alt="<?php echo esc_attr( $photographie['alt'] ); ?>"
+                >
+            </div>
         </section>
 
-        <section class="btnPhotoInteress">
-            <p>Cette photo vous intéresse ?</p>
-            <button class="contactPhoto">Contact</button>
-        </section>      
+        <section class="contactSlider">
+            <div class="btnPhotoInteress">
+                <p>Cette photo vous intéresse ?</p>
+                <button class="contactPhoto">Contact</button>
+            </div>      
 
-        <section class="sliderContainer">
+            <div class="sliderContainer">
                 <div class="changeImg noImg"> 
                     <img class="previousImg hiddenImg" src="<?php echo esc_url($previousThumbnailUrl); ?>" alt="Image précédente">
                     <img class="nextImg hiddenImg" src="<?php echo esc_url($nextThumbnailUrl); ?>" alt="Image suivante">
                 </div> 
                 <div class="arrows">
                     <a class="arrow-left" href="<?php echo $previousPostUrl; ?>">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow_left.png" alt="flèche gauche">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow_left.svg" alt="flèche gauche">
                     </a>
                     <a class="arrow-right" href="<?php echo $nextPostUrl; ?>">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow_right.png" alt="flèche droite">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow_right.svg" alt="flèche droite">
                     </a>                 
                 </div>
+            </div>
         </section>
+
     </article>
 
     

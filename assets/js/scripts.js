@@ -75,13 +75,14 @@ jQuery(document).ready(function ($) {
     let nextPostUrl = $(this).data("next");
     const firstPostUrl = $(this).data("first");
 
-    // Redirige vers le premier post si on est à la fin de la série
+  // Redirige vers le premier post si on est à la fin de la série
     if (nextPostUrl === "#") {
       nextPostUrl = firstPostUrl;
     }
     window.location.href = nextPostUrl;
   });
 
+  // Fait apparaitre les images du slider au hover
   arrow_left.hover(
     function(){img_previous.removeClass("hiddenImg");}, 
     function(){img_previous.addClass("hiddenImg");}

@@ -9,15 +9,19 @@
     
 <header>
   
-    <a href="<?php echo home_url( '/' ); ?>">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-mota.png" alt="logo">
-    </a>
+  <a href="<?php echo home_url( '/' ); ?>">
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-mota.svg" alt="logo">
+  </a>
+
   <nav>  
-    <?php
-    // menu main déclaré dans functions.php
+    <div class="navDesktop">
+      <?php
+      // menu main déclaré dans functions.php
 			wp_nav_menu(array('theme_location' => 'main')); 
-		?>
+		  ?>
+    </div>
   </nav>
+
 </header>
 
 <body <?php body_class(); ?>>
