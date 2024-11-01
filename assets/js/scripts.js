@@ -106,6 +106,22 @@ jQuery(document).ready(function ($) {
   const $burgerMenu = $(".burger-menu");
   const $menuLinks = $(".burger-menu a");
 
+  // Fonction pour vérifier la taille de la fenêtre et retirer la classe "open" si la largeur dépasse 767px
+  function checkWindowSize() {
+    if ($(window).width() > 767) {
+      $burgerMenu.removeClass("open");
+      $burgerIcone.removeClass("hiddenNow");
+      $crossIcone.addClass("hiddenNow");
+      $("body").css("overflow", "auto");
+    }
+  }
+
+  // Appelle la fonction de vérification au chargement de la page
+  checkWindowSize();
+
+  // Ajoute un événement de redimensionnement pour appeler la fonction à chaque fois que la fenêtre change de taille
+  $(window).resize(checkWindowSize);
+
   // Ajoute un événement de clic sur le bouton du menu burger
   $burgerMenuButton.click(function () {
     // Bascule l'état du menu
@@ -116,11 +132,9 @@ jQuery(document).ready(function ($) {
     if (isOpen) {
       $burgerIcone.addClass("hiddenNow");
       $crossIcone.removeClass("hiddenNow");
-      //console.log("c'est ouvert");
     } else {
       $burgerIcone.removeClass("hiddenNow");
       $crossIcone.addClass("hiddenNow");
-      //console.log("c'est fermé");
     }
 
     // Désactive le défilement du corps de la page si le menu est ouvert
@@ -137,3 +151,4 @@ jQuery(document).ready(function ($) {
     $("body").css("overflow", "auto");
   });
 });
+

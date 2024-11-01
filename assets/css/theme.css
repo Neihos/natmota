@@ -87,7 +87,7 @@
   color: rgb(0, 0, 0);
 }
 
-#menu-item-57 a:hover,
+#menu-item-176 a:hover,
 #menu-item-29 a:hover,
 #menu-item-69 a:hover,
 #menu-item-50 a:hover,
@@ -558,6 +558,45 @@
   font-style: italic;
   src: url(/wp-content/themes/natmota/assets/fonts/Poppins-BoldItalic.ttf);
 }
+.homePhotos {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+}
+.homePhotos .photoContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  max-width: 1148px;
+  width: 100%;
+  margin: 20px auto;
+  justify-content: center;
+}
+.homePhotos .photoContainer .homePhoto-item {
+  display: flex;
+  aspect-ratio: 564/495;
+  width: clamp(19.5rem, 1.5rem + 37.5vw, 35.25rem);
+  height: auto;
+}
+.homePhotos .photoContainer .homePhoto-item img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .hero_header h1 {
+    font-size: clamp(1.7rem, -0.5rem + 9.388vw, 4rem);
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
+  }
+  .homePhotos .photoContainer {
+    flex-direction: column;
+    padding: 0 29px;
+  }
+  .homePhotos .photoContainer .homePhoto-item {
+    width: 100%;
+  }
+}
 body {
   max-width: 1440px;
   height: 100%;
@@ -590,8 +629,9 @@ body {
 /**********************/
 .hero_header {
   display: flex;
+  aspect-ratio: 1440/962;
   width: 100%;
-  height: 962px;
+  height: auto;
   justify-content: center;
   align-items: center;
   background-size: cover;
@@ -600,7 +640,7 @@ body {
 }
 .hero_header h1 {
   font-weight: 700;
-  font-size: 6rem;
+  font-size: clamp(4rem, 1.714rem + 4.762vw, 6rem);
   font-style: italic;
   text-transform: uppercase;
   color: transparent;

@@ -49,8 +49,9 @@ body {
 
 .hero_header {
   display: flex;
+  aspect-ratio: 1440 / 962;
   width: 100%;
-  height: 962px;
+  height: auto;
   justify-content: center;
   align-items: center;
   background-size: cover;
@@ -58,7 +59,7 @@ body {
   margin: 0;
   h1 {
     font-weight: 700;
-    font-size: 6rem;
+    font-size: clamp(4rem, 1.714rem + 4.762vw, 6rem);
     font-style: italic;
     text-transform: uppercase;
     color: transparent;
