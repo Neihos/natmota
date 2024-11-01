@@ -45,8 +45,10 @@ if ( have_posts() ) :
 
         <section class="contactSlider">
             <div class="btnPhotoInteress">
-                <p>Cette photo vous intéresse ?</p>
-                <button class="contactPhoto">Contact</button>
+                <div class="btnText">
+                    <p>Cette photo vous intéresse ?</p>
+                    <button class="contactPhoto">Contact</button>
+                </div>
             </div>      
 
             <div class="sliderContainer">

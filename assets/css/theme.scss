@@ -12,6 +12,8 @@
 
 @import "fonts";
 
+@import "home-page";
+
 body {
   max-width: 1440px;
   height: 100%;
@@ -22,11 +24,12 @@ body {
 .main-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: calc(100vh - 160px);
   max-width: 1440px;
   margin: 0 auto;
 }
+
 
 .page-content {
   display: flex;
@@ -38,4 +41,27 @@ body {
 // Pour cacher des éléments
 .hiddenNow {
   display: none;
+}
+
+/**********************/
+/****** Home page *****/
+/**********************/
+
+.hero_header {
+  display: flex;
+  width: 100%;
+  height: 962px;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  h1 {
+    font-weight: 700;
+    font-size: 6rem;
+    font-style: italic;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 1);
+  }
 }

@@ -5,7 +5,7 @@
 		</div>
 		<div class="popup-informations">	
 			
-            <div id="contact-form-container" data-refs-photo="<?php echo esc_attr( implode(',', (array) $refPhotos ) ); ?>">
+            <div id="contact-form-container">
                 <?php echo do_shortcode('[contact-form-7 id="1ac3fea" title="contact"]'); ?>
             </div>		
 	</div>

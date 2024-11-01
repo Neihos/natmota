@@ -21,7 +21,15 @@ $reference = get_field( 'reference');
         
    
 // Priorité à la taille "full", sinon on utilise 'large', puis 'medium'
-$image_url = $photographie['sizes']['full'] ?? $photographie['sizes']['large'] ?? $photographie['sizes']['medium'] ?? $photographie['sizes']['thumbnail'] ?? $photographie['url'];
+$image_url = null;
+if (!empty($photographie)) {
+    if (!empty($photographie['sizes'])) {
+        $image_url = $photographie['sizes']['full'] ?? $photographie['sizes']['large'] ?? $photographie['sizes']['medium'] ?? $photographie['sizes']['thumbnail'];
+    } else {
+        $image_url = $photographie['url'] ?? null;
+    }
+}
+
 
 // Obtenir les articles de type "photo" triés par date de publication
 
@@ -88,4 +96,25 @@ if ($current_cat_id) {
             ),
         ),
     ));
+}
+
+// Fonction pour récupérer une photographie aléatoire
+function get_random_photo() {
+    $random_photo_query = new WP_Query(array(
+        'post_type' => 'photo',
+        'posts_per_page' => 1,
+        'orderby' => 'rand', // Trier aléatoirement
+    ));
+    
+    if ($random_photo_query->have_posts()) {
+        while ($random_photo_query->have_posts()) {
+            $random_photo_query->the_post();
+            $random_photographie = get_field('photographie');
+            if (!empty($random_photographie)) {
+                $random_image_url = $random_photographie['sizes']['full'] ?? $random_photographie['sizes']['large'] ?? $random_photographie['sizes']['medium'] ?? $random_photographie['sizes']['thumbnail'] ?? $random_photographie['url'];
+                return esc_url($random_image_url); // Retourner l'URL de l'image
+            }
+        }
+    }
+    wp_reset_postdata();
 }

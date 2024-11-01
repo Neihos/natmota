@@ -56,27 +56,31 @@
     display: flex;
     height: 123px;
     width: 100%;
-    justify-content: space-between;
-    gap: 20px;
-    align-items: center;
-    font-size: 0.9rem;
-    font-family: "poppins", monospace, Arial, Helvetica, sans-serif;
     border-top: 1px solid rgb(0, 0, 0);
-    .contactPhoto {
-      max-width: 272px;
+    .btnText {
+      display: flex;
       width: 100%;
-      height: 50px;
-      border-radius: 2px;
-      border: none;
-      background: rgba(216, 216, 216, 1);
-      transition: background-color 0.3s ease, transform 0.3s ease,
-        box-shadow 0.3s ease;
-      cursor: pointer;
-      &:hover {
-        color: rgba(255, 255, 255, 1);
-        background: rgba(0, 0, 0, 1);
-        transform: translateY(-3px);
-        box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.02);
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      font-size: 0.9rem;
+      font-family: "poppins", monospace, Arial, Helvetica, sans-serif;
+      .contactPhoto {
+        max-width: 272px;
+        width: 100%;
+        height: 50px;
+        border-radius: 2px;
+        border: none;
+        background: rgba(216, 216, 216, 1);
+        transition: background-color 0.3s ease, transform 0.3s ease,
+          box-shadow 0.3s ease;
+        cursor: pointer;
+        &:hover {
+          color: rgba(255, 255, 255, 1);
+          background: rgba(0, 0, 0, 1);
+          transform: translateY(-3px);
+          box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.02);
+        }
       }
     }
   }
@@ -156,10 +160,15 @@
     .contactSlider {
       height: 130px;
       .btnPhotoInteress {
-        display: block;
-        flex-direction: column;
-        align-items: normal;
+        justify-content: center;
         padding: 0 56px;
+        .btnText {
+          display: block;
+          width: auto;
+          .contactPhoto {
+            width: 263px;
+          }
+        }
       }
       .sliderContainer {
         display: none;

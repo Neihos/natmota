@@ -359,14 +359,18 @@
   display: flex;
   height: 123px;
   width: 100%;
+  border-top: 1px solid rgb(0, 0, 0);
+}
+.contactSlider .btnPhotoInteress .btnText {
+  display: flex;
+  width: 100%;
   justify-content: space-between;
   gap: 20px;
   align-items: center;
   font-size: 0.9rem;
   font-family: "poppins", monospace, Arial, Helvetica, sans-serif;
-  border-top: 1px solid rgb(0, 0, 0);
 }
-.contactSlider .btnPhotoInteress .contactPhoto {
+.contactSlider .btnPhotoInteress .btnText .contactPhoto {
   max-width: 272px;
   width: 100%;
   height: 50px;
@@ -376,7 +380,7 @@
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
-.contactSlider .btnPhotoInteress .contactPhoto:hover {
+.contactSlider .btnPhotoInteress .btnText .contactPhoto:hover {
   color: rgb(255, 255, 255);
   background: rgb(0, 0, 0);
   transform: translateY(-3px);
@@ -459,10 +463,15 @@
     height: 130px;
   }
   .preview-photo .contactSlider .btnPhotoInteress {
-    display: block;
-    flex-direction: column;
-    align-items: normal;
+    justify-content: center;
     padding: 0 56px;
+  }
+  .preview-photo .contactSlider .btnPhotoInteress .btnText {
+    display: block;
+    width: auto;
+  }
+  .preview-photo .contactSlider .btnPhotoInteress .btnText .contactPhoto {
+    width: 263px;
   }
   .preview-photo .contactSlider .sliderContainer {
     display: none;
@@ -559,7 +568,7 @@ body {
 .main-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: calc(100vh - 160px);
   max-width: 1440px;
   margin: 0 auto;
@@ -574,4 +583,26 @@ body {
 
 .hiddenNow {
   display: none;
+}
+
+/**********************/
+/****** Home page *****/
+/**********************/
+.hero_header {
+  display: flex;
+  width: 100%;
+  height: 962px;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+}
+.hero_header h1 {
+  font-weight: 700;
+  font-size: 6rem;
+  font-style: italic;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(255, 255, 255);
 }/*# sourceMappingURL=theme.css.map */
