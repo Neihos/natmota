@@ -150,5 +150,46 @@ jQuery(document).ready(function ($) {
     // Réactive le défilement du corps de la page à la fermeture du menu
     $("body").css("overflow", "auto");
   });
-});
 
+  /************************************************/
+  /***** Gérer les photos de la page d'acceuil*****/
+  /************************************************/
+  $(document).ready(function () {
+    const $homePhoto = $(".photoContainer");
+    let page = 1; // Page de départ
+    const perPage = 8; // Nombre d'images par page
+    const $loadMoreButton = $("#loadMorePhotos");
+
+    function loadPhotos(page) {
+      const restUrl = `${natmota_js.rest_url}?per_page=${perPage}&page=${page}`;
+
+      $.getJSON(restUrl, function (photos) {
+        if (photos.length) {
+          photos.forEach(function (contenu) {
+            // Vérifiez si 'photo_images' existe dans chaque contenu
+            if (contenu.photo_images) {
+              // Parcourez toutes les images de l'article
+              contenu.photo_images.forEach(function (image) {
+                // Créez un élément img pour chaque image et ajoutez-le à la page
+                let photoadd = `<div class="homePhoto-item"><img src="${image.url}"></div>`;
+                $homePhoto.append(photoadd);
+              });
+            }
+          });
+        } else {
+          // Si aucune photo n'est trouvée, désactiver le bouton
+          $loadMoreButton.text("Plus de photos").prop("disabled", true);
+        }
+      });
+    }
+
+    // Charger les premières photos au chargement de la page
+    loadPhotos(page);
+
+    // Charger les photos suivantes lors du clic sur "Load More"
+    $loadMoreButton.click(function () {
+      page++; // Incrémente la page pour charger les photos suivantes
+      loadPhotos(page);
+    });
+  });
+});

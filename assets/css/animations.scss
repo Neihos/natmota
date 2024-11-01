@@ -37,8 +37,13 @@
     letter-spacing: normal;
   }
 
-  100% {
+  50% {
     transform: scale(1.1, 1.1);
     letter-spacing: 1px;
+  }
+
+  100% {
+    transform: scale(1, 1);
+    letter-spacing: normal;
   }
 }

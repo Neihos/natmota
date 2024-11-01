@@ -1,3 +1,27 @@
+/**********************/
+/****** Home page *****/
+/**********************/
+
+.hero_header {
+  display: flex;
+  aspect-ratio: 1440 / 962;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  h1 {
+    font-weight: 700;
+    font-size: clamp(4rem, 1.714rem + 4.762vw, 6rem);
+    font-style: italic;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 1);
+  }
+}
+
 .homePhotos {
   display: block;
   margin: 0 auto;
@@ -19,6 +43,32 @@
         width: 100%;
         object-fit: cover;
       }
+    }
+  }
+}
+
+.btnload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  margin-bottom: 20px;
+  #loadMorePhotos {
+    max-width: 272px;
+    width: 100%;
+    height: 50px;
+    border-radius: 2px;
+    border: none;
+    background: rgb(216, 216, 216);
+    transition: background-color 0.3s ease, transform 0.3s ease,
+      box-shadow 0.3s ease;
+    cursor: pointer;
+    &:hover {
+      color: rgba(255, 255, 255, 1);
+      background: rgba(0, 0, 0, 1);
+      transform: translateY(-3px);
+      box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.02);
     }
   }
 }

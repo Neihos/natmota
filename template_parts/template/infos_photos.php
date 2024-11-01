@@ -118,36 +118,3 @@ function get_random_photo() {
     }
     wp_reset_postdata();
 }
-
-// Créer les images de la page d'accueil
-function get_home_photo() {
-    $photoHome_photos = array(); // Tableau pour stocker les URLs des images
-    
-    $photoHome_photo_query = new WP_Query(array(
-        'post_type' => 'photo',
-        'posts_per_page' => 8,
-        'orderby' => 'ASC',
-    ));
-    
-    if ($photoHome_photo_query->have_posts()) {
-        while ($photoHome_photo_query->have_posts()) {
-            $photoHome_photo_query->the_post();
-            $photoHome_photographie = get_field('photographie');
-            
-            if (!empty($photoHome_photographie)) {
-                // Priorité à la taille "full", sinon utilise les tailles inférieures
-                $photoHome_image_url = $photoHome_photographie['sizes']['full'] ?? 
-                                       $photoHome_photographie['sizes']['large'] ?? 
-                                       $photoHome_photographie['sizes']['medium'] ?? 
-                                       $photoHome_photographie['sizes']['thumbnail'] ?? 
-                                       $photoHome_photographie['url'];
-                                       
-                // Ajoute l'URL de l'image au tableau
-                $photoHome_photos[] = esc_url($photoHome_image_url);
-            }
-        }
-    }
-    wp_reset_postdata();
-    
-    return $photoHome_photos; // Retourne le tableau d'URLs des images
-}

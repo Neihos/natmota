@@ -26,24 +26,25 @@ include('template_parts/template/infos_photos.php');
         <h1>Photograph Event</h1>
     </section>
 
-    <section class="homePhotos">
-        <div class="photoContainer">
-            <?php
-            // Appel de la fonction pour obtenir les URLs des photos
-            $home_photos = get_home_photo();
-            if (!empty($home_photos)) : ?>
-            <?php foreach ($home_photos as $photo_url) : ?>
-                <div class="homePhoto-item">
-                    <img src="<?php echo esc_url($photo_url); ?>" alt="Photos de la page d'accueil">
-                </div>         
-            <?php endforeach; ?>
-        
-            <?php else : ?>
-                <p>Aucune photo n'est disponible pour l'instant.</p>
-            <?php endif; ?>
+    <section class="selectBy">
+        <div class="allSelect">
+            <div class="cat_form">
+                <select name="categories" id="categories"><option value="">Catégories</option></select>
+                <select name="formats" id="formats"><option value="">Formats</option></select>
+            </div>
+                <select name="trie" id="trie"><option value="">Trier par</option></select>
         </div>
     </section>
 
+    <section class="homePhotos">
+        <div class="photoContainer">        
+            
+        </div>
+    </section>
+
+        <div class="btnload">
+            <button id="loadMorePhotos">Charger plus</button>
+        </div>
 
 
 
